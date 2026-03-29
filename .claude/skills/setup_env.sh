@@ -3,8 +3,6 @@
 # Mac Development Environment Setup Script
 # Run this script outside Claude Code to install development tools
 
-set -e  # Exit on error
-
 # Colors for output
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -43,25 +41,39 @@ if ! command -v brew &> /dev/null; then
 else
     echo -e "${GREEN}✓ Homebrew already installed${NC}"
     echo -e "${BLUE}Updating Homebrew...${NC}"
-    brew update
+    if brew update; then
+        echo -e "${GREEN}✓ Homebrew updated${NC}"
+    else
+        echo -e "${YELLOW}⚠ Homebrew update failed (continuing anyway)${NC}"
+    fi
 fi
 echo ""
 
 # Step 3: Install essential development tools
 echo -e "${BLUE}=== Installing Essential Development Tools ===${NC}"
-brew install git gh node yarn pnpm python@3.11 pipx
-echo -e "${GREEN}✓ Essential tools installed${NC}"
+if brew install git gh node yarn pnpm python@3.11 pipx; then
+    echo -e "${GREEN}✓ Essential tools installed${NC}"
+else
+    echo -e "${YELLOW}⚠ Some essential tools may have failed to install${NC}"
+fi
 echo ""
 
 # Step 4: Install development utilities
 echo -e "${BLUE}=== Installing Development Utilities ===${NC}"
-brew install tree ripgrep fd fzf bat jq yq curl wget httpie tmux
-echo -e "${GREEN}✓ Development utilities installed${NC}"
+if brew install tree ripgrep fd fzf bat jq yq curl wget httpie tmux; then
+    echo -e "${GREEN}✓ Development utilities installed${NC}"
+else
+    echo -e "${YELLOW}⚠ Some development utilities may have failed to install${NC}"
+fi
 echo ""
 
 # Step 5: Install shell enhancements
 echo -e "${BLUE}=== Installing Shell Enhancements ===${NC}"
-brew install zsh-autosuggestions zsh-syntax-highlighting
+if brew install zsh-autosuggestions zsh-syntax-highlighting; then
+    echo -e "${GREEN}✓ Shell enhancements packages installed${NC}"
+else
+    echo -e "${YELLOW}⚠ Some shell enhancement packages may have failed to install${NC}"
+fi
 
 # Add to .zshrc if it exists
 if [ -f ~/.zshrc ]; then
