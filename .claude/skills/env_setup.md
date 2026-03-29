@@ -7,9 +7,62 @@ description: Complete Mac development environment setup for Claude Code
 
 This skill guides you through setting up a brand new Mac for optimal development with Claude Code.
 
+## 🚀 Quick Setup (Run Outside Claude Code)
+
+**Automated Setup Script**: Run this bash script in your terminal (outside Claude Code) to install all tools.
+
+```bash
+# Run the setup script
+bash ~/.claude/skills/setup_env.sh
+```
+
+The script will:
+- ✓ Create necessary directories
+- ✓ Install/update Homebrew
+- ✓ Install essential development tools (git, gh, node, yarn, pnpm, python, pipx)
+- ✓ Install development utilities (tree, ripgrep, fd, fzf, bat, jq, yq, wget, httpie, tmux)
+- ✓ Configure shell enhancements (zsh-autosuggestions, zsh-syntax-highlighting)
+- ✓ Verify Git and GitHub CLI configuration
+
+**For Claude Code**: When the user requests env_setup, verify installations using the verification commands below instead of running installations.
+
+---
+
+## ✅ Verification (For Claude Code)
+
+When the user asks to verify the environment setup, run these commands to check installations:
+
+```bash
+# Check Homebrew
+which brew
+
+# Check essential tools
+which git && which gh && which node && which yarn && which pnpm && which python3 && which pipx
+
+# Check development utilities
+which tree && which rg && which fd && which fzf && which bat && which jq && which yq && which wget && which http && which tmux
+
+# Check Git configuration
+git config --global user.name
+git config --global user.email
+
+# Check GitHub CLI authentication
+gh auth status
+```
+
+**Report Format**: Summarize what's installed and what's missing. If tools are missing, remind the user to run `bash ~/.claude/skills/setup_env.sh` outside Claude Code.
+
+---
+
 ## 📋 Prerequisites
 - macOS (latest stable version recommended)
 - Admin access to install software
+
+---
+
+## 📖 Manual Setup Instructions
+
+If you prefer manual setup or need to understand what the script does, follow these steps:
 
 ## 🚀 Step-by-Step Setup
 
