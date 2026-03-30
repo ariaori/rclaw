@@ -13,16 +13,53 @@
 		A1000007000000000000001 /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000008000000000000001 /* PhotoCaptureView.swift */; };
 		A1000009000000000000001 /* PhotoProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000010000000000000001 /* PhotoProcessingView.swift */; };
 		A1000011000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000012000000000000001 /* Assets.xcassets */; };
+		A5DFC9582F79F7F00095FBE7 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = A5DFC9572F79F7F00095FBE7 /* Auth */; };
+		A5DFC95A2F79F7F00095FBE7 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = A5DFC9592F79F7F00095FBE7 /* Functions */; };
+		A5DFC95C2F79F7F00095FBE7 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = A5DFC95B2F79F7F00095FBE7 /* PostgREST */; };
+		A5DFC95E2F79F7F00095FBE7 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = A5DFC95D2F79F7F00095FBE7 /* Realtime */; };
+		A5DFC9602F79F7F00095FBE7 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = A5DFC95F2F79F7F00095FBE7 /* Storage */; };
+		B0000000050692E6197470DF /* CompanyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000050692E6197470DF /* CompanyService.swift */; };
+		B00000004591ED317A6DA257 /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000004591ED317A6DA257 /* SupabaseClient.swift */; };
+		B00000005BD73D1F3BCCFD92 /* ReceiptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000005BD73D1F3BCCFD92 /* ReceiptService.swift */; };
+		B0000000674EE938896CA7AA /* ReceiptListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000674EE938896CA7AA /* ReceiptListView.swift */; };
+		B0000000738648B9A39798E8 /* SubscriptionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000000738648B9A39798E8 /* SubscriptionListView.swift */; };
+		B00000007887567A6A36014A /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000007887567A6A36014A /* ChatView.swift */; };
+		B000021DA8FA50EA2F944958 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021DA8FA50EA2F944958 /* AuthService.swift */; };
+		B000021DB23048BFA7CC2E82 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021DB23048BFA7CC2E82 /* Company.swift */; };
+		B000021DC51FA3A3907E4429 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021DC51FA3A3907E4429 /* Receipt.swift */; };
+		B000021DCEFFD994D9A76525 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021DCEFFD994D9A76525 /* ImagePicker.swift */; };
+		B000021DD11CF5FBDEEF7ABA /* CompanySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021DD11CF5FBDEEF7ABA /* CompanySettingsView.swift */; };
+		B000021DE2812F828AC4426B /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021DE2812F828AC4426B /* ChatBubble.swift */; };
+		B000021DE9B1DD6B9F2BE959 /* CompanyOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021DE9B1DD6B9F2BE959 /* CompanyOnboardingView.swift */; };
+		B000021DF4D441AE6DC0F171 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021DF4D441AE6DC0F171 /* Subscription.swift */; };
+		B000021DF69608176628823B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021DF69608176628823B /* UserProfile.swift */; };
+		B000021E17AE21195211D3EF /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021E17AE21195211D3EF /* ChatMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A1000013000000000000001 /* rclaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rclaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1000002000000000000001 /* rclawApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rclawApp.swift; sourceTree = "<group>"; };
 		A1000004000000000000001 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1000006000000000000001 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A1000008000000000000001 /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
 		A1000010000000000000001 /* PhotoProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProcessingView.swift; sourceTree = "<group>"; };
 		A1000012000000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1000013000000000000001 /* rclaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rclaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0000000050692E6197470DF /* CompanyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyService.swift; sourceTree = "<group>"; };
+		F00000004591ED317A6DA257 /* SupabaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
+		F00000005BD73D1F3BCCFD92 /* ReceiptService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptService.swift; sourceTree = "<group>"; };
+		F0000000674EE938896CA7AA /* ReceiptListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptListView.swift; sourceTree = "<group>"; };
+		F0000000738648B9A39798E8 /* SubscriptionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionListView.swift; sourceTree = "<group>"; };
+		F00000007887567A6A36014A /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		F000021DA8FA50EA2F944958 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		F000021DB23048BFA7CC2E82 /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		F000021DC51FA3A3907E4429 /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		F000021DCEFFD994D9A76525 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F000021DD11CF5FBDEEF7ABA /* CompanySettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanySettingsView.swift; sourceTree = "<group>"; };
+		F000021DE2812F828AC4426B /* ChatBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		F000021DE9B1DD6B9F2BE959 /* CompanyOnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyOnboardingView.swift; sourceTree = "<group>"; };
+		F000021DF4D441AE6DC0F171 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		F000021DF69608176628823B /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		F000021E17AE21195211D3EF /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +67,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DFC95C2F79F7F00095FBE7 /* PostgREST in Frameworks */,
+				A5DFC95A2F79F7F00095FBE7 /* Functions in Frameworks */,
+				A5DFC9582F79F7F00095FBE7 /* Auth in Frameworks */,
+				A5DFC9602F79F7F00095FBE7 /* Storage in Frameworks */,
+				A5DFC95E2F79F7F00095FBE7 /* Realtime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +92,8 @@
 				A1000002000000000000001 /* rclawApp.swift */,
 				A1000018000000000000001 /* Views */,
 				A1000012000000000000001 /* Assets.xcassets */,
+				G1000000000000000000001 /* Models */,
+				G2000000000000000000001 /* Services */,
 			);
 			path = rclaw;
 			sourceTree = "<group>";
@@ -69,8 +113,38 @@
 				A1000006000000000000001 /* LoginView.swift */,
 				A1000008000000000000001 /* PhotoCaptureView.swift */,
 				A1000010000000000000001 /* PhotoProcessingView.swift */,
+				F00000007887567A6A36014A /* ChatView.swift */,
+				F000021DE2812F828AC4426B /* ChatBubble.swift */,
+				F000021DCEFFD994D9A76525 /* ImagePicker.swift */,
+				F000021DE9B1DD6B9F2BE959 /* CompanyOnboardingView.swift */,
+				F000021DD11CF5FBDEEF7ABA /* CompanySettingsView.swift */,
+				F0000000674EE938896CA7AA /* ReceiptListView.swift */,
+				F0000000738648B9A39798E8 /* SubscriptionListView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		G1000000000000000000001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F000021DF69608176628823B /* UserProfile.swift */,
+				F000021DB23048BFA7CC2E82 /* Company.swift */,
+				F000021DC51FA3A3907E4429 /* Receipt.swift */,
+				F000021DF4D441AE6DC0F171 /* Subscription.swift */,
+				F000021E17AE21195211D3EF /* ChatMessage.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		G2000000000000000000001 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F00000004591ED317A6DA257 /* SupabaseClient.swift */,
+				F000021DA8FA50EA2F944958 /* AuthService.swift */,
+				F0000000050692E6197470DF /* CompanyService.swift */,
+				F00000005BD73D1F3BCCFD92 /* ReceiptService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,6 +163,14 @@
 			dependencies = (
 			);
 			name = rclaw;
+			packageProductDependencies = (
+				A5DFC9572F79F7F00095FBE7 /* Auth */,
+				A5DFC9592F79F7F00095FBE7 /* Functions */,
+				A5DFC95B2F79F7F00095FBE7 /* PostgREST */,
+				A5DFC95D2F79F7F00095FBE7 /* Realtime */,
+				A5DFC95F2F79F7F00095FBE7 /* Storage */,
+				A5DFC9612F79F7F00095FBE7 /* Supabase */,
+			);
 			productName = rclaw;
 			productReference = A1000013000000000000001 /* rclaw.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +199,9 @@
 				Base,
 			);
 			mainGroup = A1000015000000000000001;
+			packageReferences = (
+				A5DFC9562F79F7F00095FBE7 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			productRefGroup = A1000017000000000000001 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -147,6 +232,22 @@
 				A1000007000000000000001 /* PhotoCaptureView.swift in Sources */,
 				A1000009000000000000001 /* PhotoProcessingView.swift in Sources */,
 				A1000001000000000000001 /* rclawApp.swift in Sources */,
+				B000021DF69608176628823B /* UserProfile.swift in Sources */,
+				B000021DB23048BFA7CC2E82 /* Company.swift in Sources */,
+				B000021DC51FA3A3907E4429 /* Receipt.swift in Sources */,
+				B000021DF4D441AE6DC0F171 /* Subscription.swift in Sources */,
+				B000021E17AE21195211D3EF /* ChatMessage.swift in Sources */,
+				B00000004591ED317A6DA257 /* SupabaseClient.swift in Sources */,
+				B000021DA8FA50EA2F944958 /* AuthService.swift in Sources */,
+				B0000000050692E6197470DF /* CompanyService.swift in Sources */,
+				B00000005BD73D1F3BCCFD92 /* ReceiptService.swift in Sources */,
+				B00000007887567A6A36014A /* ChatView.swift in Sources */,
+				B000021DE2812F828AC4426B /* ChatBubble.swift in Sources */,
+				B000021DCEFFD994D9A76525 /* ImagePicker.swift in Sources */,
+				B000021DE9B1DD6B9F2BE959 /* CompanyOnboardingView.swift in Sources */,
+				B000021DD11CF5FBDEEF7ABA /* CompanySettingsView.swift in Sources */,
+				B0000000674EE938896CA7AA /* ReceiptListView.swift in Sources */,
+				B0000000738648B9A39798E8 /* SubscriptionListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,15 +432,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A1000024000000000000001 /* Build configuration list for PBXProject "rclaw" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A1000025000000000000001 /* Debug */,
-				A1000026000000000000001 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		A1000020000000000000001 /* Build configuration list for PBXNativeTarget "rclaw" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -349,7 +441,60 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		A1000024000000000000001 /* Build configuration list for PBXProject "rclaw" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000025000000000000001 /* Debug */,
+				A1000026000000000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A5DFC9562F79F7F00095FBE7 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A5DFC9572F79F7F00095FBE7 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5DFC9562F79F7F00095FBE7 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		A5DFC9592F79F7F00095FBE7 /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5DFC9562F79F7F00095FBE7 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		A5DFC95B2F79F7F00095FBE7 /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5DFC9562F79F7F00095FBE7 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		A5DFC95D2F79F7F00095FBE7 /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5DFC9562F79F7F00095FBE7 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		A5DFC95F2F79F7F00095FBE7 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5DFC9562F79F7F00095FBE7 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		A5DFC9612F79F7F00095FBE7 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5DFC9562F79F7F00095FBE7 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A1000023000000000000001 /* Project object */;
 }

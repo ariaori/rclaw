@@ -1,9 +1,21 @@
+//
+//  LoginView.swift
+//  rclaw
+//
+//  User authentication view with sign in and sign up capabilities
+//
+
 import SwiftUI
 
 struct LoginView: View {
-    @Binding var isLoggedIn: Bool
+    @ObservedObject var authService: AuthService
     @State private var email = ""
     @State private var password = ""
+    @State private var fullName = ""
+    @State private var isSignUp = false
+    @State private var isLoading = false
+    @State private var showingError = false
+    @State private var errorMessage = ""
 
     var body: some View {
         VStack(spacing: 30) {
@@ -18,24 +30,37 @@ struct LoginView: View {
                 Text("Receipt Claw")
                     .font(.system(size: 34, weight: .bold))
 
-                Text("Login to manage your receipts")
+                Text(isSignUp ? "Create your account" : "Welcome back")
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
             .padding(.bottom, 40)
 
-            // Login Form (Placeholder)
+            // Auth Form
             VStack(spacing: 20) {
+                if isSignUp {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Full Name")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+
+                        TextField("John Doe", text: $fullName)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .autocapitalization(.words)
+                            .disabled(isLoading)
+                    }
+                }
+
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Email")
                         .font(.subheadline)
                         .foregroundColor(.gray)
 
-                    TextField("Enter your email", text: $email)
+                    TextField("you@example.com", text: $email)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .autocapitalization(.none)
                         .keyboardType(.emailAddress)
-                        .disabled(true)
+                        .disabled(isLoading)
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
@@ -45,61 +70,93 @@ struct LoginView: View {
 
                     SecureField("Enter your password", text: $password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .disabled(true)
-                }
-
-                // Placeholder Notice
-                VStack(spacing: 10) {
-                    Text("Login Module - To Be Implemented")
-                        .font(.caption)
-                        .foregroundColor(.orange)
-                        .padding(.top, 10)
-
-                    Text("Tap 'Demo Login' to continue")
-                        .font(.caption2)
-                        .foregroundColor(.gray)
+                        .disabled(isLoading)
                 }
             }
             .padding(.horizontal, 30)
 
-            // Login Button (Demo)
-            Button(action: {
-                // Placeholder: Skip authentication for now
-                isLoggedIn = true
-            }) {
-                Text("Demo Login")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
+            // Auth Button
+            Button(action: handleAuth) {
+                if isLoading {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .tint(.white)
+                } else {
+                    Text(isSignUp ? "Create Account" : "Sign In")
+                        .font(.headline)
+                }
             }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(isFormValid ? Color.blue : Color.gray)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            .disabled(!isFormValid || isLoading)
             .padding(.horizontal, 30)
             .padding(.top, 20)
 
             Spacer()
 
-            // Sign Up Link (Placeholder)
+            // Toggle Sign Up/Sign In
             HStack {
-                Text("Don't have an account?")
+                Text(isSignUp ? "Already have an account?" : "Don't have an account?")
                     .foregroundColor(.gray)
 
                 Button(action: {
-                    // Placeholder: Sign up not implemented
+                    withAnimation {
+                        isSignUp.toggle()
+                    }
                 }) {
-                    Text("Sign Up")
+                    Text(isSignUp ? "Sign In" : "Sign Up")
                         .foregroundColor(.blue)
                 }
-                .disabled(true)
             }
             .font(.subheadline)
             .padding(.bottom, 30)
         }
         .navigationBarHidden(true)
+        .alert("Error", isPresented: $showingError) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(errorMessage)
+        }
+    }
+
+    private var isFormValid: Bool {
+        !email.isEmpty &&
+        !password.isEmpty &&
+        password.count >= 6 &&
+        (!isSignUp || !fullName.isEmpty)
+    }
+
+    private func handleAuth() {
+        isLoading = true
+
+        Task {
+            do {
+                if isSignUp {
+                    try await authService.signUp(
+                        email: email,
+                        password: password,
+                        fullName: fullName,
+                        role: .admin // First user is admin
+                    )
+                } else {
+                    try await authService.signIn(
+                        email: email,
+                        password: password
+                    )
+                }
+                isLoading = false
+            } catch {
+                errorMessage = error.localizedDescription
+                showingError = true
+                isLoading = false
+            }
+        }
     }
 }
 
 #Preview {
-    LoginView(isLoggedIn: .constant(false))
+    LoginView(authService: AuthService())
 }

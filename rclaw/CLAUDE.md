@@ -102,6 +102,168 @@ Do NOT clutter README.md with:
 
 For these changes, update code comments only.
 
+## Common Pitfalls & Rules to Avoid Errors
+
+### Swift Syntax
+
+**❌ NEVER use escaped backslashes in SwiftUI property wrappers or key paths:**
+```swift
+// ❌ WRONG
+@Environment(\\.dismiss) var dismiss
+ForEach(items, id: \\.self) { item in }
+
+// ✅ CORRECT
+@Environment(\.dismiss) var dismiss
+ForEach(items, id: \.self) { item in }
+```
+
+**❌ NEVER use ClosedRange directly in ForEach:**
+```swift
+// ❌ WRONG - ClosedRange doesn't conform to RandomAccessCollection
+ForEach(2020...2030, id: \.self) { year in }
+
+// ✅ CORRECT - Convert to Array first
+ForEach(Array(2020...2030), id: \.self) { year in }
+```
+
+**❌ NEVER use NSNull in Codable/Encodable contexts:**
+```swift
+// ❌ WRONG - NSNull doesn't conform to Encodable
+.update(["field": NSNull()])
+
+// ✅ CORRECT - Use Optional.none with explicit type
+.update(["field": Optional<String>.none])
+```
+
+### Supabase Integration
+
+**❌ NEVER name your client class "SupabaseClient":**
+```swift
+// ❌ WRONG - Conflicts with Supabase SDK's SupabaseClient
+class SupabaseClient {
+    let client: SupabaseClient // Name collision!
+}
+
+// ✅ CORRECT - Use a different name
+class SupabaseManager {
+    let client: SupabaseClient
+}
+```
+
+**❌ NEVER use deprecated Supabase v2 APIs:**
+```swift
+// ❌ WRONG - Direct access is deprecated in v2
+supabase.database.from("table")
+supabase.auth.signIn()
+supabase.storage.from("bucket")
+
+// ✅ CORRECT - Access through client property
+supabase.client.from("table")
+supabase.client.auth.signIn()
+supabase.client.storage.from("bucket")
+```
+
+**❌ NEVER manually insert user_profiles during signup when using RLS:**
+```swift
+// ❌ WRONG - RLS will block this during signup
+let user = try await supabase.client.auth.signUp(email: email, password: password)
+try await supabase.client.from("user_profiles").insert(profile).execute()
+
+// ✅ CORRECT - Use database trigger + metadata
+let user = try await supabase.client.auth.signUp(
+    email: email,
+    password: password,
+    data: ["full_name": .string(name), "role": .string(role)]
+)
+// Database trigger creates profile automatically with SECURITY DEFINER
+```
+
+**Required database trigger for user profiles:**
+```sql
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS trigger
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+  INSERT INTO public.user_profiles (id, full_name, role)
+  VALUES (
+    NEW.id,
+    NEW.raw_user_meta_data->>'full_name',
+    NEW.raw_user_meta_data->>'role'
+  );
+  RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+```
+
+### Vision Framework
+
+**❌ NEVER import only VisionKit for OCR:**
+```swift
+// ❌ WRONG - Missing Vision framework
+import VisionKit
+let request = VNRecognizeTextRequest() // Error: VNRecognizeTextRequest not found
+
+// ✅ CORRECT - Import both Vision and VisionKit
+import Vision
+import VisionKit
+let request = VNRecognizeTextRequest()
+```
+
+### SwiftUI Previews
+
+**⚠️ Disable problematic previews with @MainActor:**
+```swift
+// ⚠️ May cause "ambiguous use of init" errors
+#Preview {
+    let service = AuthService() // @MainActor class
+    ChatView(authService: service)
+}
+
+// ✅ CORRECT - Comment out or use proper async preview
+// #Preview {
+//     ChatView(authService: AuthService())
+// }
+```
+
+### Struct Initializers
+
+**❌ NEVER create structs with parameters but only provide empty init():**
+```swift
+// ❌ WRONG - Can't initialize with parameters
+struct MessageMetadata: Codable {
+    var scanResults: ScanResults?
+    var imageUrl: String?
+
+    init() {
+        self.scanResults = nil
+        self.imageUrl = nil
+    }
+}
+let meta = MessageMetadata(scanResults: results, imageUrl: url) // Error!
+
+// ✅ CORRECT - Provide parameterized initializer
+struct MessageMetadata: Codable {
+    var scanResults: ScanResults?
+    var imageUrl: String?
+
+    init() {
+        self.scanResults = nil
+        self.imageUrl = nil
+    }
+
+    init(scanResults: ScanResults? = nil, imageUrl: String? = nil) {
+        self.scanResults = scanResults
+        self.imageUrl = imageUrl
+    }
+}
+```
+
 ## Code Standards
 
 ### File Headers and Comments
