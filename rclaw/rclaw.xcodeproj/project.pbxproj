@@ -34,7 +34,19 @@
 		B000021DF4D441AE6DC0F171 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021DF4D441AE6DC0F171 /* Subscription.swift */; };
 		B000021DF69608176628823B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021DF69608176628823B /* UserProfile.swift */; };
 		B000021E17AE21195211D3EF /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F000021E17AE21195211D3EF /* ChatMessage.swift */; };
+		33A7AEA3D9C8495DBBFA1944 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03EA2E0C13E4124BD01E785 /* SupabaseConfig.swift */; };
+		776C78D72F714E659F60A4BF /* rclawUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92469902F2246899E958CF0 /* rclawUITests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		66926B5F0D6D4DB3BC7B5D53 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1000023000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1000019000000000000001;
+			remoteInfo = rclaw;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A1000002000000000000001 /* rclawApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rclawApp.swift; sourceTree = "<group>"; };
@@ -60,6 +72,10 @@
 		F000021DF4D441AE6DC0F171 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		F000021DF69608176628823B /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		F000021E17AE21195211D3EF /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		C03EA2E0C13E4124BD01E785 /* SupabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
+		B92469902F2246899E958CF0 /* rclawUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rclawUITests.swift; sourceTree = "<group>"; };
+		8B546A375CD74BDF8AAE4E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2417063C659B411DBA085352 /* rclawUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rclawUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +91,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D29DB82427A049B68BA052C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -83,7 +106,8 @@
 			children = (
 				A1000016000000000000001 /* rclaw */,
 				A1000017000000000000001 /* Products */,
-			);
+			
+				FF6D98F8579E4DA9BE06B313 /* rclawUITests */,);
 			sourceTree = "<group>";
 		};
 		A1000016000000000000001 /* rclaw */ = {
@@ -102,7 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				A1000013000000000000001 /* rclaw.app */,
-			);
+			
+				2417063C659B411DBA085352 /* rclawUITests.xctest */,);
 			name = Products;
 			sourceTree = "<group>";
 		};
@@ -147,6 +172,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		FF6D98F8579E4DA9BE06B313 /* rclawUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B92469902F2246899E958CF0 /* rclawUITests.swift */,
+				8B546A375CD74BDF8AAE4E0E /* Info.plist */,
+			);
+			path = rclawUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -175,7 +209,33 @@
 			productReference = A1000013000000000000001 /* rclaw.app */;
 			productType = "com.apple.product-type.application";
 		};
+		68FEB507391E4F069E8F8B1F /* rclawUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4D73857ED834E7E9EDDE78D /* Build configuration list for PBXNativeTarget "rclawUITests" */;
+			buildPhases = (
+				B853328D49D942E0BDD95D27 /* Sources */,
+				D29DB82427A049B68BA052C1 /* Frameworks */,
+				8E46CBDD72F340B8B48C39C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5DF82541439A473E87268579 /* PBXTargetDependency */,
+			);
+			name = rclawUITests;
+			productName = rclawUITests;
+			productReference = 2417063C659B411DBA085352 /* rclawUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
+
+/* Begin PBXTargetDependency section */
+		5DF82541439A473E87268579 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1000019000000000000001 /* rclaw */;
+			targetProxy = 66926B5F0D6D4DB3BC7B5D53 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXProject section */
 		A1000023000000000000001 /* Project object */ = {
@@ -207,6 +267,7 @@
 			projectRoot = "";
 			targets = (
 				A1000019000000000000001 /* rclaw */,
+				68FEB507391E4F069E8F8B1F /* rclawUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -217,6 +278,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1000011000000000000001 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E46CBDD72F340B8B48C39C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +316,14 @@
 				B000021DD11CF5FBDEEF7ABA /* CompanySettingsView.swift in Sources */,
 				B0000000674EE938896CA7AA /* ReceiptListView.swift in Sources */,
 				B0000000738648B9A39798E8 /* SubscriptionListView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B853328D49D942E0BDD95D27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				776C78D72F714E659F60A4BF /* rclawUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +505,38 @@
 			};
 			name = Release;
 		};
+		2B6BA364EA494C2896D898D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rclaw.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = rclaw;
+			};
+			name = Debug;
+		};
+		4EF0EF9368964FBDA3214D14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rclaw.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = rclaw;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -446,6 +554,15 @@
 			buildConfigurations = (
 				A1000025000000000000001 /* Debug */,
 				A1000026000000000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4D73857ED834E7E9EDDE78D /* Build configuration list for PBXNativeTarget "rclawUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B6BA364EA494C2896D898D7 /* Debug */,
+				4EF0EF9368964FBDA3214D14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -264,6 +264,107 @@ struct MessageMetadata: Codable {
 }
 ```
 
+## Testing Workflow
+
+### Build and Test Protocol
+
+**⚠️ CRITICAL RULE: When user says "build and test", ALWAYS truncate staging data first.**
+
+This ensures a clean testing environment and prevents data conflicts or stale data issues.
+
+**Required Steps (in order):**
+
+1. **Truncate all staging data** using Supabase MCP:
+   ```sql
+   -- Execute this SQL before every build and test session
+   TRUNCATE TABLE chat_messages CASCADE;
+   TRUNCATE TABLE receipts CASCADE;
+   TRUNCATE TABLE subscriptions CASCADE;
+   TRUNCATE TABLE companies CASCADE;
+   TRUNCATE TABLE user_profiles CASCADE;
+   DELETE FROM auth.users;
+   ```
+
+2. **Build the project:**
+   ```bash
+   xcodebuild -project rclaw.xcodeproj -scheme rclaw -sdk iphonesimulator \
+     -destination 'platform=iOS Simulator,name=iPhone 15' build
+   ```
+
+3. **Run automated UI tests:**
+   ```bash
+   xcodebuild test -project rclaw.xcodeproj -scheme rclaw -sdk iphonesimulator \
+     -destination 'platform=iOS Simulator,name=iPhone 15'
+   ```
+
+4. **Verify test results:**
+   - Check for "TEST SUCCEEDED" or "TEST FAILED" in output
+   - Review failed test cases if any
+   - Performance tests measure app launch and navigation speed
+
+**User Triggers:**
+- "build and test"
+- "let's test"
+- "test the app"
+- "rebuild and test"
+- Any variation requesting testing
+
+**Why This Matters:**
+- Prevents RLS policy conflicts from stale data
+- Ensures signup flow works correctly
+- Avoids "user already exists" errors
+- Tests database triggers properly
+- Simulates fresh user experience
+- Automated UI tests verify critical user flows
+
+**Exception:**
+If user explicitly says "build and test WITHOUT clearing data" or "keep existing data", skip step 1.
+
+### Automated UI Tests
+
+**Test Suite:** `rclawUITests/rclawUITests.swift`
+
+The project includes automated UI tests that verify:
+
+1. **testAppLaunches** - App launches and displays login screen
+2. **testSignupFlow** - Complete user signup with unique email
+3. **testCompanyCreationFlow** - Admin creates company after signup
+4. **testNavigation** - Screen transitions and navigation
+5. **testEmptyStates** - Empty state messaging
+6. **testAccessibility** - Accessibility labels and VoiceOver support
+7. **testLaunchPerformance** - App launch performance metrics
+8. **testNavigationPerformance** - Screen transition performance
+
+**Running Tests Manually:**
+```bash
+# Run all UI tests
+xcodebuild test -project rclaw.xcodeproj -scheme rclaw \
+  -sdk iphonesimulator \
+  -destination 'platform=iOS Simulator,name=iPhone 15'
+
+# Run specific test
+xcodebuild test -project rclaw.xcodeproj -scheme rclaw \
+  -sdk iphonesimulator \
+  -destination 'platform=iOS Simulator,name=iPhone 15' \
+  -only-testing:rclawUITests/rclawUITests/testSignupFlow
+```
+
+**Test Output Location:**
+Results are saved to: `/tmp/rclaw-test-results.xcresult`
+
+**Updating Tests:**
+When UI elements change (button labels, text fields, etc.), update the test file to match:
+```swift
+// Example: If "Sign Up" button changes to "Create Account"
+app.buttons["Create Account"].tap()  // Update this line
+```
+
+**Test Best Practices:**
+- Tests use unique timestamps for emails to avoid conflicts
+- Each test can run independently (no interdependencies)
+- Performance baselines are stored for regression detection
+- Failed assertions include descriptive messages
+
 ## Code Standards
 
 ### File Headers and Comments
