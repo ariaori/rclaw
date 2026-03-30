@@ -17,6 +17,20 @@ class CompanyService: ObservableObject {
 
     /// Create a new company (admin only)
     func createCompany(name: String, address: String, taxId: String, adminUserId: UUID) async throws -> Company {
+        print("🏢 Creating company for user: \(adminUserId)")
+
+        // Verify auth session exists before creating company
+        do {
+            let session = try await supabase.client.auth.session
+            print("✅ Auth session found: \(session.user.id)")
+            print("✅ Access token present: \(session.accessToken.prefix(20))...")
+        } catch {
+            print("❌ No auth session found: \(error)")
+            throw NSError(domain: "CompanyService", code: 401, userInfo: [
+                NSLocalizedDescriptionKey: "Authentication session missing. Please try logging in again."
+            ])
+        }
+
         let company = Company(
             id: UUID(),
             name: name,
@@ -28,10 +42,23 @@ class CompanyService: ObservableObject {
             updatedAt: Date()
         )
 
-        try await supabase.client
-            .from("companies")
-            .insert(company)
-            .execute()
+        print("🏢 Inserting company record...")
+
+        // Insert company with explicit error handling
+        do {
+            try await supabase.client
+                .from("companies")
+                .insert(company)
+                .execute()
+
+            print("✅ Company created successfully: \(company.id)")
+        } catch {
+            print("❌ Error creating company: \(error)")
+            print("❌ Error details: \(error.localizedDescription)")
+            throw error
+        }
+
+        print("👤 Updating user profile with company_id...")
 
         // Update user profile with company_id
         try await supabase.client
@@ -39,6 +66,8 @@ class CompanyService: ObservableObject {
             .update(["company_id": company.id.uuidString])
             .eq("id", value: adminUserId.uuidString)
             .execute()
+
+        print("✅ User profile updated")
 
         self.currentCompany = company
         return company

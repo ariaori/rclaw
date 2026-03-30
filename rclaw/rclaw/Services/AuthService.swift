@@ -48,11 +48,32 @@ class AuthService: ObservableObject {
             ]
         )
 
-        self.currentUser = response.user
+        guard let session = response.session else {
+            throw NSError(domain: "AuthService", code: 1, userInfo: [
+                NSLocalizedDescriptionKey: "No session returned from signup"
+            ])
+        }
+
+        self.currentUser = session.user
         self.isAuthenticated = true
+
+        print("✅ User signed up: \(session.user.id)")
+        print("✅ Access token: \(session.accessToken.prefix(20))...")
+
+        // Wait for database trigger to complete and session to be fully established
+        try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
 
         // Load the profile that was automatically created by the trigger
         await loadUserProfile()
+
+        // Verify we can actually make authenticated requests
+        do {
+            let _ = try await supabase.client.auth.session
+            print("✅ Auth session verified")
+        } catch {
+            print("❌ Auth session verification failed: \(error)")
+            throw error
+        }
     }
 
     /// Sign in existing user
